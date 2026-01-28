@@ -21,19 +21,50 @@ async function searchImages(){
 
   const results = data.results;
 
-  results.map((result) =>{
-    const image = document.createElement("img");
-    image.src = result.urls.small;
-    const imageLink = document.createElement("a");
-    imageLink.href = result.links.html;
-    imageLink.target = "_blank";
+//   results.forEach((result) =>{
+//     const image = document.createElement("img");
+//     image.src = result.urls.small;
+//     const imageLink = document.createElement("a");
+//     imageLink.href = result.links.html;
+//     imageLink.target = "_blank";
 
-    imageLink.appendChild(image);
-    searchResult.appendChild(imageLink);
-  })
-  showMoreBtn.style.display = "block";
+//     imageLink.appendChild(image);
+//     searchResult.appendChild(imageLink);
+//   })
+//   showMoreBtn.style.display = "block";
+// }
+
+results.forEach((result) => {
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("image-card");
+
+  const image = document.createElement("img");
+  image.src = result.urls.small;
+
+  const imageLink = document.createElement("a");
+  imageLink.href = result.links.html;
+  imageLink.target = "_blank";
+  imageLink.appendChild(image);
+
+  const photographer = document.createElement("p");
+  photographer.innerText = `📸 ${result.user.name}`;
+
+  const likes = document.createElement("p");
+  likes.innerText = `❤️ Likes: ${result.likes}`;
+
+  const downloadBtn = document.createElement("a");
+  downloadBtn.innerText = "⬇️ Download";
+  downloadBtn.href = result.links.download;
+  downloadBtn.target = "_blank";
+
+  imageContainer.appendChild(imageLink);
+  imageContainer.appendChild(photographer);
+  imageContainer.appendChild(likes);
+  imageContainer.appendChild(downloadBtn);
+
+  searchResult.appendChild(imageContainer);
+});
 }
-
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   page=1;
