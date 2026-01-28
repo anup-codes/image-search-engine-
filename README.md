@@ -53,3 +53,10 @@ Likes count
 Download button
 
 “Show More” button loads the next page of results
+
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4def061c-2e8d-4bee-a6f9-e64ee32c9f83" />
+
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6397355b-7cf2-49e7-9a49-9bbf21503c3d" />
+
