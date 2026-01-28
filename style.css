@@ -1,76 +1,167 @@
-*{
-   margin: 0;
-   padding: 0;
-   font-family:'Poppins', sans-serif;
-   box-sizing: border-box;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body{
-  background-color: #39297b ;
-  color: #fff;
+/* ---------------- BACKGROUND ---------------- */
+body {
+  min-height: 100vh;
+  color: #eaeaf0;
+  background:
+    radial-gradient(circle at 20% 20%, #6b5cff33, transparent 40%),
+    radial-gradient(circle at 80% 80%, #ff4d4d33, transparent 40%),
+    linear-gradient(160deg, #0f0c29, #302b63, #24243e);
 }
-h1{
+
+/* ---------------- TITLE ---------------- */
+h1 {
   text-align: center;
-  margin: 100px auto 50px;
-  font-weight:550;
+  margin: 90px auto 50px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
-form{
+
+/* ---------------- SEARCH BAR ---------------- */
+form {
   width: 90%;
-  max-width: 600px;
+  max-width: 650px;
   margin: auto;
-  height: 80px;
-  background: #434989;
+  height: 72px;
   display: flex;
-align-items: center;
-border-radius: 8px;
+  align-items: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
-form input{
+
+/* input */
+form input {
   flex: 1;
   height: 100%;
-  border: 0;
-  outline: 0;
+  padding: 0 26px;
+  border: none;
+  outline: none;
   background: transparent;
   color: #fff;
-  font-size: 18px;
-  padding: 0 30px;
+  font-size: 16px;
+  letter-spacing: 0.4px;
 }
-form button {
-  padding: 0 40px;
-  height: 100%;
-  background: #ff3929;
-  color: #fff;
-  font-size: 18px;
-  border: 0;
-  outline: 0;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  cursor: pointer;
-}
-::placeholder{
-color: #fff;
-font-size: 18px;
-}
-#show-more-btn{
-  background-color: #ff3929;
-  color: #fff;
-  border: 0;
-  outline: 0;
-  padding: 10px 20px;
-  margin: 10px auto 100px ;
-  cursor: pointer;
-  display: none;
-}
-#search-result{
-  width: 80%;
-  margin: 100px auto 50px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
 
+/* button */
+form button {
+  height: 100%;
+  padding: 0 38px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.6px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  transition: all 0.35s ease;
 }
-#search-result img{
- width: 100%;
- height: 230px;
- object-fit:cover;
- border-radius: 5px;
+
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(255, 75, 43, 0.45);
+}
+
+/* ---------------- PLACEHOLDER ---------------- */
+::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------------- IMAGE GRID ---------------- */
+#search-result {
+  width: 90%;
+  max-width: 1250px;
+  margin: 90px auto 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+/* card */
+#search-result a {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+/* image */
+#search-result img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: transform 0.6s ease;
+}
+
+/* gradient overlay */
+#search-result a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* hover effects */
+#search-result a:hover img {
+  transform: scale(1.12);
+}
+
+#search-result a:hover::after {
+  opacity: 1;
+}
+
+/* ---------------- SHOW MORE BUTTON ---------------- */
+#show-more-btn {
+  display: none;
+  margin: 30px auto 90px;
+  padding: 14px 36px;
+  font-size: 15px;
+  letter-spacing: 0.6px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  box-shadow: 0 18px 45px rgba(79, 172, 254, 0.45);
+  transition: all 0.35s ease;
+}
+
+#show-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 25px 60px rgba(79, 172, 254, 0.65);
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+    margin-top: 70px;
+  }
+
+  form {
+    height: 64px;
+  }
+
+  #search-result img {
+    height: 210px;
+  }
 }
